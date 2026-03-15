@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.log
+
+# Skill specific
+*.opus
+*.mp3
+*.wav
+.openclaw/
