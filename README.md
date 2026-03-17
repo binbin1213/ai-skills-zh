@@ -18,6 +18,16 @@
 
 ---
 
+### [news-aggregator](./news-aggregator/)
+多源新闻聚合与整理，按科技/财经/AI/智能体分类，生成简洁摘要并标注来源。支持 OpenClaw 多通道推送与定时调度。
+
+**适用平台：**
+- ✅ **OpenClaw**（推荐）- 支持通道推送与 cron 调度
+- ✅ Claude Code - 基础功能
+- ✅ 其他支持 SKILL.md 格式的 Agent
+
+---
+
 ## 🚀 快速安装
 
 ### 针对 OpenClaw 用户（推荐）
@@ -93,7 +103,6 @@ cp -r voice-tts ~/.claude/skills/
 ```
 
 ---
-
 ## 📖 使用说明
 
 ### 针对 OpenClaw
