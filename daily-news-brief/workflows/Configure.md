@@ -10,7 +10,7 @@
 
 ```bash
 # 读取配置文件
-cat ~/.news-aggregator/config.json
+cat ~/.daily-news-brief/config.json
 ```
 
 输出示例：
@@ -29,7 +29,7 @@ cat ~/.news-aggregator/config.json
 
 【本地文档】
 - 保存：是
-- 路径：~/news-aggregator/每日新闻/
+- 路径：~/daily-news-brief/每日新闻/
 
 【推送渠道】
 - 启用：是
@@ -162,7 +162,7 @@ openclaw channels login --channel feishu
 ```text
 当前设置：
 - 保存本地文档：是
-- 保存路径：~/news-aggregator/每日新闻/
+- 保存路径：~/daily-news-brief/每日新闻/
 
 操作：
 1. 修改保存状态（是/否）
@@ -182,7 +182,7 @@ echo "确认删除？(yes/no)"
 read confirm
 
 if [ "$confirm" = "yes" ]; then
-  rm -rf ~/news-aggregator/每日新闻/*
+  rm -rf ~/daily-news-brief/每日新闻/*
   echo "✅ 历史文档已清空"
 fi
 ```
@@ -241,7 +241,7 @@ fi
   ],
   "schedule": "0 21 * * *",
   "saveLocalDoc": true,
-  "localDocPath": "~/news-aggregator/每日新闻/",
+  "localDocPath": "~/daily-news-brief/每日新闻/",
   "maxNewsPerCategory": 10,
   "maxPerSourcePerCategory": 3,
   "summaryMaxPerCategory": 5,
@@ -256,7 +256,7 @@ fi
 #### 选项 7：查看配置文件内容
 
 ```bash
-cat ~/.news-aggregator/config.json
+cat ~/.daily-news-brief/config.json
 ```
 
 #### 选项 8：退出
@@ -269,15 +269,15 @@ cat ~/.news-aggregator/config.json
 
 ```bash
 # 备份旧配置
-cp ~/.news-aggregator/config.json ~/.news-aggregator/config.json.backup
+cp ~/.daily-news-brief/config.json ~/.daily-news-brief/config.json.backup
 
 # 保存新配置
-cat > ~/.news-aggregator/config.json << 'EOF'
+cat > ~/.daily-news-brief/config.json << 'EOF'
 {
   "newsSources": [...],
   "schedule": "0 8 * * *",
   "saveLocalDoc": true,
-  "localDocPath": "~/news-aggregator/每日新闻/",
+  "localDocPath": "~/daily-news-brief/每日新闻/",
   "maxNewsPerCategory": 15,
   "maxPerSourcePerCategory": 3,
   "summaryMaxPerCategory": 5,
@@ -315,7 +315,7 @@ node tools/FetchNews.ts --test
 新配置摘要：
 - 新闻源：36氪、虎嗅网、财新网、机器之心、新智元
 - 定时时间：每天 08:30
-- 本地文档：保存到 ~/news-aggregator/每日新闻/
+- 本地文档：保存到 ~/daily-news-brief/每日新闻/
 - 每类新闻数：15 条
 
 下次执行时间：明天 08:30
@@ -360,10 +360,10 @@ node tools/Configure.ts --reset
 
 ```bash
 # 打开配置文件（手动修改）
-vim ~/.news-aggregator/config.json
+vim ~/.daily-news-brief/config.json
 
 # 修改后快速验证 JSON 格式
-node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.HOME + '/.news-aggregator/config.json','utf-8')))"
+node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.HOME + '/.daily-news-brief/config.json','utf-8')))"
 ```
 
 ## 常见问题
@@ -375,10 +375,10 @@ A: 需要手动更新 cron 任务或重启任务计划程序。
 A: 可以编辑配置文件直接修改，或使用 `--add-source` 命令批量添加。
 
 **Q3: 配置文件格式错误怎么办？**
-A: 恢复备份：`cp ~/.news-aggregator/config.json.backup ~/.news-aggregator/config.json`
+A: 恢复备份：`cp ~/.daily-news-brief/config.json.backup ~/.daily-news-brief/config.json`
 
 **Q4: 保存路径有权限问题？**
-A: 检查目录权限：`ls -la ~/news-aggregator/`，确保有写入权限。
+A: 检查目录权限：`ls -la ~/daily-news-brief/`，确保有写入权限。
 
 ## 配置文件验证
 
@@ -386,5 +386,5 @@ A: 检查目录权限：`ls -la ~/news-aggregator/`，确保有写入权限。
 
 ```bash
 # 验证 JSON 格式
-node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.HOME + '/.news-aggregator/config.json','utf-8')))"
+node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.HOME + '/.daily-news-brief/config.json','utf-8')))"
 ```

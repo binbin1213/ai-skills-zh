@@ -1,4 +1,4 @@
-# NewsAggregator 快速开始指南
+# Daily News Brief 快速开始指南
 
 一分钟快速上手新闻聚合 Skill。
 
@@ -12,12 +12,12 @@
 ### 步骤 1：创建配置目录
 
 ```bash
-mkdir -p ~/.news-aggregator/logs
+mkdir -p ~/.daily-news-brief/logs
 ```
 
 ### 步骤 2：创建配置文件
 
-创建 `~/.news-aggregator/config.json` 文件：
+创建 `~/.daily-news-brief/config.json` 文件：
 
 ```json
 {
@@ -49,7 +49,7 @@ mkdir -p ~/.news-aggregator/logs
   ],
   "schedule": "0 21 * * *",
   "saveLocalDoc": true,
-  "localDocPath": "~/news-aggregator/每日新闻/",
+  "localDocPath": "~/daily-news-brief/每日新闻/",
   "maxNewsPerCategory": 10,
   "maxPerSourcePerCategory": 3,
   "summaryMaxPerCategory": 5,
@@ -64,7 +64,7 @@ mkdir -p ~/.news-aggregator/logs
 ### 步骤 3：安装依赖
 
 ```bash
-cd /path/to/news-aggregator/tools
+cd /path/to/daily-news-brief/tools
 npm install rss-parser cheerio
 ```
 
@@ -96,7 +96,7 @@ node FetchNews.ts --test
 - 多模态模型发布（来源：机器之心）
 - …
 
-本地文档：~/news-aggregator/每日新闻/2026-03-17.md
+本地文档：~/daily-news-brief/每日新闻/2026-03-17.md
 ```
 
 ## 配置 OpenClaw 推送渠道
@@ -115,14 +115,14 @@ openclaw channels login --channel whatsapp
 ```
 
 提示：目标（群/频道/联系人）由 OpenClaw 内部配置管理，本技能仅保存通道列表。
-如果 OpenClaw 未设置默认目标，可在 `~/.news-aggregator/config.json` 里配置 `push.targets`。
+如果 OpenClaw 未设置默认目标，可在 `~/.daily-news-brief/config.json` 里配置 `push.targets`。
 
 ## 配置定时任务
 
 ### 推荐：OpenClaw cron（统一调度）
 
 ```bash
-openclaw cron add "0 21 * * *" "运行 NewsAggregator：node tools/FetchNews.ts --push"
+openclaw cron add "0 21 * * *" "运行 Daily News Brief：node tools/FetchNews.ts --push"
 ```
 
 ### macOS / Linux
@@ -136,7 +136,7 @@ crontab -e
 添加以下内容（每天晚上 9 点执行）：
 
 ```cron
-0 21 * * * cd /path/to/news-aggregator/tools && node FetchNews.ts >> ~/.news-aggregator/logs/cron.log 2>&1
+0 21 * * * cd /path/to/daily-news-brief/tools && node FetchNews.ts >> ~/.daily-news-brief/logs/cron.log 2>&1
 ```
 
 保存后，定时任务就会自动运行。
@@ -148,8 +148,8 @@ crontab -e
 3. 设置触发器：每天 21:00
 4. 操作：启动程序
    - 程序：`C:\Program Files\nodejs\node.exe`
-   - 参数：`C:\path\to\news-aggregator\tools\FetchNews.ts`
-   - 起始于：`C:\path\to\news-aggregator\tools`
+   - 参数：`C:\path\to\daily-news-brief\tools\FetchNews.ts`
+   - 起始于：`C:\path\to\daily-news-brief\tools`
 
 ## 日常使用
 
@@ -171,10 +171,10 @@ node tools/FetchNews.ts --test
 
 ```bash
 # 查看今日新闻
-cat ~/news-aggregator/每日新闻/$(date +%Y-%m-%d).md
+cat ~/daily-news-brief/每日新闻/$(date +%Y-%m-%d).md
 
 # 列出所有历史文档
-ls -la ~/news-aggregator/每日新闻/
+ls -la ~/daily-news-brief/每日新闻/
 ```
 
 ### 在 AI 聊天中使用
@@ -228,7 +228,7 @@ node tools/Configure.ts --reset
 
 ### 修改定时时间
 
-编辑 `~/.news-aggregator/config.json`，修改 `schedule` 字段：
+编辑 `~/.daily-news-brief/config.json`，修改 `schedule` 字段：
 
 ```json
 {
@@ -240,7 +240,7 @@ node tools/Configure.ts --reset
 
 ### 添加/删除新闻源
 
-编辑 `~/.news-aggregator/config.json`，在 `newsSources` 数组中添加或删除源：
+编辑 `~/.daily-news-brief/config.json`，在 `newsSources` 数组中添加或删除源：
 
 ```json
 {
@@ -257,7 +257,7 @@ node tools/Configure.ts --reset
 
 ### 修改每类新闻数量
 
-编辑 `~/.news-aggregator/config.json`，修改 `maxNewsPerCategory`：
+编辑 `~/.daily-news-brief/config.json`，修改 `maxNewsPerCategory`：
 
 ```json
 {
@@ -269,7 +269,7 @@ node tools/Configure.ts --reset
 
 ```bash
 # 删除所有历史文档
-rm ~/news-aggregator/每日新闻/*
+rm ~/daily-news-brief/每日新闻/*
 
 # 禁用本地文档保存
 # 编辑 config.json，设置 saveLocalDoc: false
@@ -278,10 +278,10 @@ rm ~/news-aggregator/每日新闻/*
 ## 常见问题
 
 **Q: 新闻抓取失败？**
-A: 检查网络连接，查看日志文件 `~/.news-aggregator/logs/fetch-news.log`
+A: 检查网络连接，查看日志文件 `~/.daily-news-brief/logs/fetch-news.log`
 
 **Q: 定时任务没执行？**
-A: 检查 cron 日志：`tail -f ~/.news-aggregator/logs/cron.log`
+A: 检查 cron 日志：`tail -f ~/.daily-news-brief/logs/cron.log`
 
 **Q: 如何查看可用新闻源？**
 A: 查看 SKILL.md 中的"新闻源说明"章节
@@ -299,11 +299,11 @@ A: 删除 cron 任务：`crontab -e`，删除相关行
 crontab -e  # 删除相关行
 
 # 删除配置和数据
-rm -rf ~/.news-aggregator
-rm -rf ~/news-aggregator
+rm -rf ~/.daily-news-brief
+rm -rf ~/daily-news-brief
 
 # 可选：删除 Skill
-rm -rf /path/to/news-aggregator
+rm -rf /path/to/daily-news-brief
 ```
 
 ## 进阶功能
@@ -338,7 +338,7 @@ const categoryKeywords = {
 
 ```bash
 # 统计各分类新闻数量
-grep "## " ~/news-aggregator/每日新闻/*.md | cut -d ' ' -f2 | sort | uniq -c
+grep "## " ~/daily-news-brief/每日新闻/*.md | cut -d ' ' -f2 | sort | uniq -c
 ```
 
 ## 获取帮助

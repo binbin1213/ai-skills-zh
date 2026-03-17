@@ -6,13 +6,13 @@
 
 ### 步骤 1：读取配置
 
-读取配置文件 `~/.news-aggregator/config.json`：
+读取配置文件 `~/.daily-news-brief/config.json`：
 
 ```typescript
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const configPath = join(process.env.HOME, '.news-aggregator/config.json');
+const configPath = join(process.env.HOME, '.daily-news-brief/config.json');
 const config = JSON.parse(readFileSync(configPath, 'utf-8'));
 ```
 
@@ -241,7 +241,7 @@ function saveLocalMarkdown(md: string, config: Config) {
 - 多模态模型发布（来源：机器之心）
 - …
 
-本地文档：~/news-aggregator/每日新闻/2026-03-17.md
+本地文档：~/daily-news-brief/每日新闻/2026-03-17.md
 ```
 
 ### 步骤 11：错误处理和日志
@@ -258,7 +258,7 @@ async function runFetchNews() {
     console.error(`[${new Date().toISOString()}] 错误：`, error);
 
     // 保存错误日志
-    const logDir = join(process.env.HOME, '.news-aggregator/logs');
+    const logDir = join(process.env.HOME, '.daily-news-brief/logs');
     const logFile = join(logDir, 'error.log');
     mkdirSync(logDir, { recursive: true });
     appendFileSync(logFile, `[${new Date().toISOString()}] ${error}\n`);
@@ -288,7 +288,7 @@ node tools/FetchNews.ts --push
 node tools/FetchNews.ts --no-push
 ```
 
-说明：若 OpenClaw 没有默认目标，可在 `~/.news-aggregator/config.json` 配置 `push.targets`。
+说明：若 OpenClaw 没有默认目标，可在 `~/.daily-news-brief/config.json` 配置 `push.targets`。
 
 ## 依赖库
 

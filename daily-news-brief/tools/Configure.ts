@@ -5,7 +5,7 @@ import { dirname, join } from 'path';
 import { homedir } from 'os';
 import type { Config, NewsSource } from './types';
 
-const CONFIG_PATH = join(homedir(), '.news-aggregator/config.json');
+const CONFIG_PATH = join(homedir(), '.daily-news-brief/config.json');
 
 const DEFAULT_CONFIG: Config = {
   newsSources: [
@@ -36,7 +36,7 @@ const DEFAULT_CONFIG: Config = {
   ],
   schedule: '0 21 * * *',
   saveLocalDoc: true,
-  localDocPath: '~/news-aggregator/每日新闻/',
+  localDocPath: '~/daily-news-brief/每日新闻/',
   maxNewsPerCategory: 10,
   summaryMaxPerCategory: 5,
   maxPerSourcePerCategory: 3,

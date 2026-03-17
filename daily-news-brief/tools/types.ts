@@ -1,5 +1,5 @@
 /**
- * NewsAggregator Type Definitions
+ * Daily News Brief Type Definitions
  * 新闻聚合工具的类型定义
  */
 

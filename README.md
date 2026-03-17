@@ -18,8 +18,13 @@
 
 ---
 
-### [news-aggregator](./news-aggregator/)
+### [daily-news-brief](./daily-news-brief/)
 多源新闻聚合与整理，按科技/财经/AI/智能体分类，生成简洁摘要并标注来源。支持 OpenClaw 多通道推送与定时调度。
+
+**亮点：**
+- 来源均衡摘要（避免单一媒体霸榜）
+- 每类/每来源上限可配置
+- OpenClaw 多通道推送与 cron 调度一体化
 
 **适用平台：**
 - ✅ **OpenClaw**（推荐）- 支持通道推送与 cron 调度

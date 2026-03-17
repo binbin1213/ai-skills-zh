@@ -82,7 +82,7 @@ openclaw channels login --channel feishu
 openclaw channels login --channel whatsapp
 ```
 
-由 OpenClaw 智能体记录用户选择并写入 `~/.news-aggregator/config.json` 的 `push.channels` 与 `schedule`。
+由 OpenClaw 智能体记录用户选择并写入 `~/.daily-news-brief/config.json` 的 `push.channels` 与 `schedule`。
 
 ### 步骤 4：配置推送时间
 
@@ -105,15 +105,15 @@ openclaw channels login --channel whatsapp
 是否保存本地 Markdown 文档？(Y/n)
 默认：Y
 
-如果保存，默认路径为：~/news-aggregator/每日新闻/
+如果保存，默认路径为：~/daily-news-brief/每日新闻/
 要修改保存路径吗？(Y/n)
 ```
 
-**默认**：保存到 `~/news-aggregator/每日新闻/`
+**默认**：保存到 `~/daily-news-brief/每日新闻/`
 
 ### 步骤 6：创建配置文件
 
-在 `~/.news-aggregator/` 目录下创建配置文件 `config.json`：
+在 `~/.daily-news-brief/` 目录下创建配置文件 `config.json`：
 
 ```json
 {
@@ -133,7 +133,7 @@ openclaw channels login --channel whatsapp
   ],
   "schedule": "0 21 * * *",
   "saveLocalDoc": true,
-  "localDocPath": "~/news-aggregator/每日新闻/",
+  "localDocPath": "~/daily-news-brief/每日新闻/",
   "maxNewsPerCategory": 10,
   "maxPerSourcePerCategory": 3,
   "summaryMaxPerCategory": 5,
@@ -150,7 +150,7 @@ openclaw channels login --channel whatsapp
 **推荐：使用 OpenClaw cron（统一调度与日志）**
 
 ```bash
-openclaw cron add "0 21 * * *" "运行 NewsAggregator：node tools/FetchNews.ts --push"
+openclaw cron add "0 21 * * *" "运行 Daily News Brief：node tools/FetchNews.ts --push"
 ```
 
 **备选：macOS/Linux（使用系统 cron）：**
@@ -160,7 +160,7 @@ openclaw cron add "0 21 * * *" "运行 NewsAggregator：node tools/FetchNews.ts 
 crontab -e
 
 # 添加定时任务
-0 21 * * * /path/to/node /path/to/news-aggregator/tools/FetchNews.ts >> ~/.news-aggregator/logs/cron.log 2>&1
+0 21 * * * /path/to/node /path/to/daily-news-brief/tools/FetchNews.ts >> ~/.daily-news-brief/logs/cron.log 2>&1
 ```
 
 **Windows（使用任务计划程序）：**
@@ -168,7 +168,7 @@ crontab -e
 1. 打开"任务计划程序"
 2. 创建基本任务
 3. 设置触发器：每天 21:00
-4. 操作：运行脚本 `node C:\path\to\news-aggregator\tools\FetchNews.ts`
+4. 操作：运行脚本 `node C:\path\to\daily-news-brief\tools\FetchNews.ts`
 
 ### 步骤 8：测试新闻抓取
 
@@ -189,12 +189,12 @@ node tools/FetchNews.ts --test
 输出确认信息：
 
 ```text
-✅ NewsAggregator 配置完成！
+✅ Daily News Brief 配置完成！
 
 配置摘要：
 - 新闻源：36氪、虎嗅网、财新网、机器之心等
 - 定时时间：每天 21:00
-- 本地文档：保存到 ~/news-aggregator/每日新闻/
+- 本地文档：保存到 ~/daily-news-brief/每日新闻/
 
 接下来：
 - 定时任务将自动运行
@@ -214,7 +214,7 @@ A: 可以减少新闻源数量，或者调整 `maxNewsPerCategory` 参数。
 
 **Q3: 定时任务没有执行？**
 A: 检查：
-- cron 日志：`tail -f ~/.news-aggregator/logs/cron.log`
+- cron 日志：`tail -f ~/.daily-news-brief/logs/cron.log`
 - 权限问题：确保脚本有执行权限
 - 路径问题：使用绝对路径
 

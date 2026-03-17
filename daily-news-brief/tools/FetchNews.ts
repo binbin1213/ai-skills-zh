@@ -9,8 +9,8 @@ import { NewsClassifier } from './NewsClassifier';
 import { MarkdownGenerator } from './MarkdownGenerator';
 import type { Config, FetchNewsOptions, CategorizedNews } from './types';
 
-const CONFIG_PATH = join(homedir(), '.news-aggregator/config.json');
-const LOG_DIR = join(homedir(), '.news-aggregator/logs');
+const CONFIG_PATH = join(homedir(), '.daily-news-brief/config.json');
+const LOG_DIR = join(homedir(), '.daily-news-brief/logs');
 
 async function loadConfig(): Promise<Config> {
   if (!existsSync(CONFIG_PATH)) {
