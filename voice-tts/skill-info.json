@@ -1,0 +1,15 @@
+{
+  "name": "voice-tts",
+  "version": "2.0.0",
+  "description": "使用 edge-tts 生成高质量中文语音消息并发送。支持多种中文声音（男声/女声/方言），可调节语速音调，适用于飞书/Telegram/Discord 等渠道的语音消息发送。支持两种实现：Python edge-tts（推荐，稳定）和 Node.js node-edge-tts（功能完整，支持配置持久化）。",
+  "author": "Community",
+  "license": "MIT",
+  "dependencies": {
+    "python": "edge-tts",
+    "node": ["node-edge-tts", "commander"]
+  },
+  "install": {
+    "python": "pipx install edge-tts",
+    "node": "cd scripts && npm install"
+  }
+}
